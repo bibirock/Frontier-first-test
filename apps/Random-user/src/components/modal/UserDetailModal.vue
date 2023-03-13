@@ -5,19 +5,19 @@ teleport(to="body")
         .modal-content(:class="'bg-white z-10 p-10 rounded-xl relative'")
             Icon(@click='closeModal()' icon="iconoir:cancel" width="25" :class="'absolute top-5 right-5 cursor-pointer'")
             p.text-center.text-lg {{ "Profile" }}
-            img(:src="user?.picture.large" :class="'block mx-auto rounded-xl border-1'")
+            img(:src="userData.picture.large" :class="'block mx-auto rounded-xl border-1'")
             .info-area(:class="'set-item-center flex-col w-fit mx-auto mt-4'")
-                span {{ "Name : " + user?.name.first }}
-                span {{ "Gender : " + user?.gender }}
-                span {{ "Country : " + user?.location.country }}
-                span {{ "Email : " + user?.email }}
+                span {{ "Name : " + userData.name.first }}
+                span {{ "Gender : " + userData.gender }}
+                span {{ "Country : " + userData.location.country }}
+                span {{ "Email : " + userData.email }}
 </template>
 
 <script lang="ts" setup>
 import type { UserData } from '@/types/type';
 
 type Props = {
-    user?: UserData;
+    userData: UserData;
 };
 
 defineProps<Props>();

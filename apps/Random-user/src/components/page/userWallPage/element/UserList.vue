@@ -1,7 +1,7 @@
 <template lang="pug">
 div.card-list(:class="'p-2 sm:p-11'")
     .user-area(:class="'mx-auto w-11/12 set-item-center flex-col'")
-        .user-list.cursor-pointer(v-for='(user,i) in data' @click="sendUserData(user)" :class="'m-2 w-full rounded-lg border overflow-hidden md:w-[60%] lg:w-[50%] sm:hover:drop-shadow-md sm:hover:scale-105 bg-white'")
+        .user-list.cursor-pointer(v-for='user in userList' @click="sendUserData(user)" :class="'m-2 w-full rounded-lg border overflow-hidden md:w-[60%] lg:w-[50%] sm:hover:drop-shadow-md sm:hover:scale-105 bg-white'")
             .info-area(:class="'mx-auto flex'")
                 img(:src="user?.picture.large" referrerPolicy="no-referrer" :class="'hidden sm:block'")
                 img(:src="user?.picture.medium" referrerPolicy="no-referrer" :class="'block self-center sm:hidden'")
@@ -17,10 +17,10 @@ div.card-list(:class="'p-2 sm:p-11'")
 
 <script setup lang="ts">
 import { $addFavorite, $checkFavoriteUser, $removeFavorite } from '@/lib/userWallPageUtils';
-import type { UserDataArr, UserData } from '@/types/type';
+import type { UserArray, UserData } from '@/types/type';
 
 type Props = {
-    data?: UserDataArr;
+    userList: UserArray;
 };
 
 defineProps<Props>();

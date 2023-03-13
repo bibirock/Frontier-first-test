@@ -81,6 +81,6 @@ export type RequireUserDataParams = {
     results: number;
 };
 
-export type UserDataArr = Array<UserData>;
+export type UserArray = Array<UserData>;
 
 export type UserId = UserData['login']['uuid'];

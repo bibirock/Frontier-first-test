@@ -23,29 +23,29 @@ export const $storePageMode = computed({
 
 type UserId = UserData['login']['uuid'];
 
-const favorite = ref<Array<UserData>>();
+const favoriteList = ref<Array<UserData>>([]);
 export function $getFavoriteList(): [] {
-    const localFavorite = JSON.parse(window.sessionStorage.getItem('favorite') || 'null');
+    const localFavorite = JSON.parse(window.sessionStorage.getItem('favoriteList') || 'null');
     if (localFavorite !== null) {
-        favorite.value = localFavorite;
+        favoriteList.value = localFavorite;
         return localFavorite;
     } else {
-        favorite.value = [];
+        favoriteList.value = [];
         return [];
     }
 }
 
 export function $addFavorite(userData: UserData) {
-    favorite.value?.push(userData);
-    window.sessionStorage.setItem('favorite', JSON.stringify(favorite.value));
+    favoriteList.value.push(userData);
+    window.sessionStorage.setItem('favoriteList', JSON.stringify(favoriteList.value));
 }
 
 export function $checkFavoriteUser(id: UserId) {
-    return favorite.value?.some((e) => e.login.uuid === id);
+    return favoriteList.value.some((e) => e.login.uuid === id);
 }
 
 export function $removeFavorite(id: UserId) {
-    const index = favorite.value?.findIndex((e) => e.login.uuid === id);
-    favorite.value?.splice(index as number, 1);
-    window.sessionStorage.setItem('favorite', JSON.stringify(favorite.value));
+    const index = favoriteList.value.findIndex((e) => e.login.uuid === id);
+    favoriteList.value.splice(index as number, 1);
+    window.sessionStorage.setItem('favoriteList', JSON.stringify(favoriteList.value));
 }

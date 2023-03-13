@@ -20,6 +20,6 @@ export function $resetErrorState() {
 
 export function $onNetworkError() {
     $netWorkError.value = true;
-    ($errorStatus.status = ErrorStatus.NetworkError), ($errorStatus.title = 'Network Erorr');
+    ($errorStatus.status = ErrorStatus.NetworkError), ($errorStatus.title = 'Network Error');
     $errorStatus.subTitle = 'Please confirm your internet connection or try again';
 }

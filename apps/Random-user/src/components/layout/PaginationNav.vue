@@ -78,7 +78,7 @@ function shouldDisplay(number: number) {
         return [1, current - 1, current, current + 1, total].includes(number);
     }
     if (props.current === 1) {
-        return [current, current + 1, current + 2, , total].includes(number);
+        return [current, current + 1, current + 2, total].includes(number);
     } else {
         return [1, total, total - 1, total - 2].includes(number);
     }
